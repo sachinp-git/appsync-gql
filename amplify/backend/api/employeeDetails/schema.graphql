@@ -1,0 +1,77 @@
+type Employee @model {
+  id: ID!
+  firstname: String!
+  lastname: String!
+  address: [Address] @connection
+  skills: [Skills] @connection
+}
+type Address @model {
+  id: ID!
+  line1: String!
+  line2: String!
+  city: String!
+  state: String!
+  zipcode: String!
+}
+
+type Skills @model {
+  id: ID!
+  skillName: String!
+}
+
+type Mutation {
+  addNewEmployee(input: AddNewEmployeeInput!): Employee @function(name: "employeeActions-${env}")
+  addNewAddress(input: AddNewAddressInput!): Address @function(name: "employeeActions-${env}")
+  addNewSkill(input: AddNewSkillInput!): Skills @function(name: "employeeActions-${env}")
+  editEmployee(input: UpdateEmployeeInput!): Employee @function(name: "employeeActions-${env}")
+  editAddress(input: UpdateAddressInput!): Address @function(name: "employeeActions-${env}")
+  editSkill(input: UpdateSkillInput!): Skills @function(name: "employeeActions-${env}")  
+}
+
+input AddNewEmployeeInput {
+  id: ID
+  firstname: String!
+  lastname: String!
+}
+
+input AddNewAddressInput {
+  id: ID
+  line1: String!
+  line2: String!
+  city: String!
+  state: String!
+  zipcode: String!
+  employeeAddressId: String
+}
+
+
+input AddNewSkillInput {
+  id: ID
+  skillName: String!
+  employeeSkillsId: ID
+}
+
+
+input UpdateEmployeeInput {
+  id: ID!
+  firstname: String
+  lastname: String
+}
+
+input UpdateAddressInput {
+  id: ID!
+  line1: String
+  line2: String
+  city: String
+  state: String
+  zipcode: String
+  employeeAddressId: String
+}
+
+
+input UpdateSkillInput {
+  id: ID!
+  skillName: String
+  employeeSkillsId: ID
+}
+

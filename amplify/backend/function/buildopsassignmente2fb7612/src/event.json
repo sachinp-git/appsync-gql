@@ -1,0 +1,11 @@
+{   
+    "typeName": "Mutation",
+    "fieldName": "mutateEmployee",
+    "arguments": {
+        "input":{
+            "id": "6dca1c4c-e61b-49ad-8187-a2abe894bce3",
+            "firstname": "Mara",
+            "lastname": "tu"
+          }
+    }
+}
